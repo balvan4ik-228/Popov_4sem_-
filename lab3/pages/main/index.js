@@ -20,19 +20,19 @@ export class MainPage {
         return [
             {
                 id: 1,
-                src: "https://avatars.mds.yandex.net/i?id=42e799d894dfe173de89d2507971242f_l-3643119-images-thumbs&n=13",
+                src: "https://avatars.mds.yandex.net/i?id=6bc79ade09f73a54430344b4702d769639b907ee-5858120-images-thumbs&n=13",
                 title: "Базовая станция 4G",
                 text: "Стандарт LTE с частотой 1800 МГц. Радиус покрытия - до 3 км в городе. Поддерживает до 300 одновременных подключений. Высота вышки - 35 метров. Рабочая температура: от -50°C до +50°C."
             },
             {
                 id: 2,
-                src: "https://avatars.mds.yandex.net/get-altay/467304/2a0000018578199922eb714ba7a19ac3d9bc/orig",
+                src: "https://avatars.mds.yandex.net/i?id=150456f9cd3b6272fb8c2e0e0d5ddfe22baabfd2-7051380-images-thumbs&n=13",
                 title: "5G Мини-вышка",
                 text: "Компактная вышка для плотной городской застройки. Частота 3500 МГц, скорость до 1 Гбит/с. Радиус - 500 метров. Устанавливается на крышах и столбах освещения."
             },
             {
                 id: 3,
-                src: "https://www.iphones.ru/wp-content/uploads/2019/07/0-1-1241x930.jpg",
+                src: "https://avatars.mds.yandex.net/i?id=d7e045f0f8ac910f040c2609c473da56acae133f-10639895-images-thumbs&n=13",
                 title: "Антенна MIMO",
                 text: "Технология множественного ввода-вывода. Увеличивает пропускную способность в 2-3 раза. Используется в густонаселенных районах. Количество антенн: 4x4 или 8x8."
             },
