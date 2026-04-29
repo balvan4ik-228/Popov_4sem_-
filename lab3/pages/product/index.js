@@ -13,22 +13,33 @@ export class ProductPage {
                 id: 1,
                 title: "Базовая станция 4G",
                 modelType: "4G Base Station",
-                description: "Стандарт LTE с частотой 1800 МГц. Радиус покрытия - до 3 км в городе. Поддерживает до 300 одновременных подключений. Высота вышки - 35 метров. Рабочая температура: от -50°C до +50°C.",
-                specs: "Частота: 1800 МГц | Мощность: 40 Вт | Защита: IP65"
+                sketchfabId: "c10049d9970d4f0abf88791a2f3d4275",
+                description: "Базовая станция 4G обеспечивает стабильное покрытие на больших территориях благодаря высоте мачты 35 метров. Оборудование работает в экстремальных температурных условиях от -50°C до +50°C, что делает её идеальной для установки в любых климатических зонах. Станция поддерживает технологию MIMO 2x2, что повышает скорость передачи данных для конечных пользователей. Автоматическая система мониторинга позволяет удалённо управлять параметрами вещания и быстро реагировать на нештатные ситуации.",
+                specs: "Частота: 1800 МГц | Мощность: 40 Вт | Защита: IP65 | Высота: 35 м"
             },
             2: {
                 id: 2,
                 title: "5G Мини-вышка",
                 modelType: "5G Mini Tower",
-                description: "Компактная вышка для плотной городской застройки. Частота 3500 МГц, скорость до 1 Гбит/с. Радиус - 500 метров. Устанавливается на крышах и столбах освещения.",
-                specs: "Частота: 3500 МГц | Скорость: до 1 Гбит/с | Вес: 45 кг"
+                sketchfabId: "be31aa331d7a4ddcb30eafb2bee3dcde",
+                description: "5G Мини-вышка специально разработана для установки на крышах жилых домов и столбах городского освещения, что позволяет быстро расширять покрытие без строительства новых мачт. Оборудование поддерживает технологию beamforming, которая направляет сигнал точно на устройства пользователей, снижая помехи и экономя энергию. Благодаря компактным размерам и весу всего 45 кг, монтаж занимает не более 2 часов. Вышка полностью защищена от пыли и влаги по стандарту IP65, что гарантирует бесперебойную работу в любую погоду.",
+                specs: "Частота: 3500 МГц | Скорость: до 1 Гбит/с | Вес: 45 кг | Радиус: 500 м"
             },
             3: {
                 id: 3,
                 title: "Антенна MIMO",
                 modelType: "MIMO Antenna",
-                description: "Технология множественного ввода-вывода. Увеличивает пропускную способность в 2-3 раза. Используется в густонаселенных районах. Количество антенн: 4x4 или 8x8.",
+                sketchfabId: "3dfd287c8fbc4db3b79531ed1d9b315d",
+                description: "Антенна MIMO с конфигурацией 4x4 или 8x8 радикально меняет подход к передаче данных, используя несколько пространственных потоков одновременно. Установка этой антенны позволяет увеличить пропускную способность существующей инфраструктуры в 2-3 раза без дополнительных частот. Устройство работает в широком диапазоне частот от 1700 до 2700 МГц, что делает её универсальным решением для любых операторов. Коэффициент усиления 25 dBi обеспечивает уверенный приём даже на границе зоны покрытия, а интеллектуальная система адаптации автоматически подстраивается под помехи.",
                 specs: "Конфигурация: 4x4/8x8 | Диапазон: 1700-2700 МГц | Усиление: 25 dBi"
+            },
+            4: {
+                id: 4,
+                title: "GPS/ГЛОНАСС вышка",
+                modelType: "GPS/GLONASS Tower",
+                sketchfabId: "9b51a01f9e41452ba7ab997bafb9dba2",
+                description: "GPS/ГЛОНАСС вышка обеспечивает высокоточную синхронизацию времени для всех базовых станций в сети с погрешностью менее 100 наносекунд, что критически важно для бесшовного переключения между сотами. Оборудование одновременно работает с двумя спутниковыми системами (GPS и ГЛОНАСС), что гарантирует стабильный сигнал даже при сбоях одной из них. Встроенный резервный источник питания позволяет вышке работать автономно до 72 часов при отключении основного электропитания. Для корректной работы требуется прямая видимость неба, поэтому вышка обычно устанавливается на открытых площадках или крышах без высоких препятствий вокруг.",
+                specs: "Погрешность: <100 нс | Питание: 72 часа резерва | Тип: GPS/GLONASS"
             }
         };
 
@@ -40,124 +51,56 @@ export class ProductPage {
     }
 
     getHTML() {
+        const data = this.getData();
         return `
             <div id="product-page" class="product-container">
                 <div class="back-button-wrapper"></div>
                 <div class="product-content">
                     <div class="product-header">
-                        <h1 class="product-title">${this.getData().title}</h1>
-                        <p class="product-model">${this.getData().modelType}</p>
+                        <h1 class="product-title">${data.title}</h1>
+                        <p class="product-model">${data.modelType}</p>
                     </div>
-                    <div class="product-3d-container">
-                        <canvas id="product-canvas-${this.id}" class="product-canvas-3d"></canvas>
+                    <div class="product-3d-container" id="sketchfab-container-${this.id}">
+                        <div style="display: flex; justify-content: center; align-items: center; height: 100%; color: #7dd3fc;">
+                            Загрузка 3D модели...
+                        </div>
                     </div>
                     <div class="product-info">
                         <h3>Описание</h3>
-                        <p class="product-description">${this.getData().description}</p>
+                        <p class="product-description">${data.description}</p>
                         <h3>Характеристики</h3>
-                        <p class="product-specs">${this.getData().specs}</p>
+                        <p class="product-specs">${data.specs}</p>
                     </div>
                 </div>
             </div>
         `;
     }
 
-    clickBack() {
-        const mainPage = new MainPage(this.parent);
-        mainPage.render();
-    }
-
     init3DModel() {
-        const canvas = document.getElementById(`product-canvas-${this.id}`);
-        if (!canvas) return;
+        const container = document.getElementById(`sketchfab-container-${this.id}`);
+        if (!container) return;
 
         const data = this.getData();
 
-        // Настройка canvas для 3D отображения
-        canvas.width = canvas.clientWidth;
-        canvas.height = canvas.clientHeight;
+        // Очищаем контейнер
+        container.innerHTML = '';
 
-        const ctx = canvas.getContext('2d');
+        // Создаем iframe для Sketchfab
+        const iframe = document.createElement('iframe');
+        iframe.title = data.title;
+        iframe.src = `https://sketchfab.com/models/${data.sketchfabId}/embed`;
+        iframe.allow = "autoplay; fullscreen; xr-spatial-tracking";
+        iframe.allowFullscreen = true;
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "none";
 
-        // Функция анимации для 3D эффекта
-        let rotation = 0;
+        container.appendChild(iframe);
+    }
 
-        function draw3DAntenna() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // Градиентный фон
-            const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-            gradient.addColorStop(0, '#0a0f1e');
-            gradient.addColorStop(1, '#0d1425');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const size = Math.min(canvas.width, canvas.height) * 0.3;
-
-            rotation += 0.02;
-
-            // Рисуем 3D антенну (стилизованная)
-            ctx.save();
-            ctx.translate(centerX, centerY);
-            ctx.rotate(rotation);
-
-            // Основная мачта
-            ctx.fillStyle = '#c0c0c0';
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = '#38bdf8';
-            ctx.fillRect(-10, -size, 20, size * 2);
-
-            // Антенна (верхняя часть)
-            ctx.fillStyle = '#e0e0e0';
-            ctx.beginPath();
-            ctx.moveTo(-15, -size);
-            ctx.lineTo(0, -size - 40);
-            ctx.lineTo(15, -size);
-            ctx.fill();
-
-            // Приемники
-            ctx.fillStyle = '#38bdf8';
-            for(let i = 0; i < 4; i++) {
-                const angle = (i * Math.PI * 2) / 4;
-                const x = Math.cos(angle) * 25;
-                const y = Math.sin(angle) * 25;
-                ctx.beginPath();
-                ctx.arc(x, y - size/2, 6, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.fillStyle = '#7dd3fc';
-            }
-
-            // Волновые эффекты
-            ctx.strokeStyle = '#38bdf8';
-            ctx.lineWidth = 2;
-            for(let i = 0; i < 3; i++) {
-                const radius = 40 + i * 15 + Math.sin(Date.now() * 0.003 + i) * 5;
-                ctx.beginPath();
-                ctx.arc(0, -size/2, radius, 0, Math.PI * 2);
-                ctx.stroke();
-            }
-
-            ctx.restore();
-
-            // Текст с названием модели
-            ctx.fillStyle = '#e0f2fe';
-            ctx.font = 'bold 16px Inter';
-            ctx.textAlign = 'center';
-            ctx.shadowBlur = 0;
-            ctx.fillText(data.modelType, centerX, centerY + size + 30);
-
-            requestAnimationFrame(draw3DAntenna);
-        }
-
-        draw3DAntenna();
-
-        // Обработка изменения размера окна
-        window.addEventListener('resize', () => {
-            canvas.width = canvas.clientWidth;
-            canvas.height = canvas.clientHeight;
-        });
+    clickBack() {
+        const mainPage = new MainPage(this.parent);
+        mainPage.render();
     }
 
     render() {
@@ -169,7 +112,7 @@ export class ProductPage {
         const backButton = new BackButtonComponent(backButtonWrapper);
         backButton.render(this.clickBack.bind(this));
 
-        // Запускаем 3D анимацию после рендера
+        // Запускаем встраивание 3D модели
         setTimeout(() => {
             this.init3DModel();
         }, 100);

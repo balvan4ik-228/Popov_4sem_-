@@ -9,7 +9,7 @@ export class ProductCardComponent {
                 <img class="card-img-top" src="${data.src}" alt="${data.title}">
                 <div class="card-body">
                     <h5 class="card-title">${data.title}</h5>
-                    <p class="card-text">${data.text.substring(0, 160)}${data.text.length > 160 ? '...' : ''}</p>
+                    <p class="card-text">${data.text.substring()}</p>
                     <button class="btn btn-primary" id="click-card-${data.id}" data-id="${data.id}">Подробнее</button>
                 </div>
             </div>
