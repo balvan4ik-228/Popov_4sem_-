@@ -1,0 +1,152 @@
+{
+  "info": {
+    "name": "Cell Towers API",
+    "_postman_id": "f3f1f7b0-5a8b-4b77-9b0e-111111111111",
+    "description": "Коллекция запросов для управления вышками сотовой связи",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": [""]
+        }
+      }
+    },
+    {
+      "name": "GET /towers",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/towers",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["towers"]
+        }
+      }
+    },
+    {
+      "name": "GET /towers with filter location=Полярное плато",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/towers?location=Полярное%20плато",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["towers"],
+          "query": [
+            {
+              "key": "location",
+              "value": "Полярное плато"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET /towers with filter status=Активна",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/towers?status=Активна",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["towers"],
+          "query": [
+            {
+              "key": "status",
+              "value": "Активна"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "GET /towers/1",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/towers/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["towers", "1"]
+        }
+      }
+    },
+    {
+      "name": "POST /towers",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Вышка: Южный коридор\",\n  \"location\": \"Экватор\",\n  \"status\": \"Планируется\",\n  \"coverage\": \"5G\",\n  \"maintenanceDate\": \"I квартал 2036\",\n  \"description\": \"Обеспечение связи для транспортных маршрутов.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/towers",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["towers"]
+        }
+      }
+    },
+    {
+      "name": "PATCH /towers/2",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Активна\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/towers/2",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["towers", "2"]
+        }
+      }
+    },
+    {
+      "name": "DELETE /towers/4",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/towers/4",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["towers", "4"]
+        }
+      }
+    }
+  ]
+}
